@@ -1,0 +1,195 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>CLEMI Salas Quirúrgicas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+<link rel="stylesheet" href="assets/contrato.css">
+<style>
+.demo-ingreso { display:flex; flex-direction:column; gap:6px; background:var(--dorado-suave); border:1px solid #e8d7a3; border-radius:10px; padding:12px 14px; font-size:.9rem; }
+.demo-ingreso b { color:var(--verde-osc); }
+.demo-ingreso span { color:var(--gris); }
+.demo-ingreso div { display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
+.demo-cinta { background:var(--verde-900); color:var(--dorado-claro); text-align:center; font-size:.8rem; font-weight:600; letter-spacing:.03em; padding:6px 16px; }
+.rp-fondo { position:fixed; inset:0; z-index:150; background:#e9e5da; overflow-y:auto; }
+.rp-barra { position:sticky; top:0; z-index:2; background:var(--verde-osc); color:#fff; display:flex; gap:12px; align-items:center; justify-content:space-between; padding:10px 20px; flex-wrap:wrap; }
+.rp-barra button { font:600 14px var(--f-texto); border-radius:8px; padding:8px 16px; cursor:pointer; background:linear-gradient(180deg,#E8C25B,#C6A13B); border:1px solid #8E6C1C; color:#112A1D; }
+.rp-hoja { background:var(--papel); width:min(820px, calc(100% - 32px)); margin:20px auto 40px; padding:40px 36px; box-shadow:0 6px 30px rgba(0,0,0,.15); font-size:13.5px; }
+.rp-enc { display:grid; grid-template-columns:70px minmax(0,1fr) auto; gap:16px; align-items:center; border-bottom:3px solid var(--dorado); padding-bottom:12px; }
+.rp-enc img { width:70px; }
+.rp-enc h1 { font:600 19px/1.2 var(--f-titulo); color:var(--verde-osc); }
+.rp-sub, .rp-g { color:var(--gris); }
+.rp-n { text-align:right; font-size:12px; color:var(--gris); }
+.rp-n b { display:block; font:700 16px var(--f-titulo); color:var(--dorado-osc); }
+.rp-t { font-weight:700; font-size:17px; margin:14px 0 2px; }
+.rp-hoja h2 { font:600 14.5px var(--f-titulo); color:var(--verde-osc); margin:20px 0 8px; padding-bottom:4px; border-bottom:1px solid var(--linea); }
+.rp-hoja h2 span { color:var(--dorado-osc); margin-right:6px; }
+.rp-hoja table { width:100%; border-collapse:collapse; }
+.rp-hoja th, .rp-hoja td { text-align:left; padding:5px 7px; border-bottom:1px solid var(--linea); vertical-align:top; }
+.rp-hoja th { font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--gris); background:#f7f2e4; }
+.rp-kv { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid var(--linea); border-left:1px solid var(--linea); }
+.rp-kv div { padding:6px 8px; border-right:1px solid var(--linea); border-bottom:1px solid var(--linea); min-width:0; }
+.rp-kv span { display:block; font-size:10px; letter-spacing:.07em; text-transform:uppercase; color:var(--gris); }
+.rp-kv b { font-weight:600; }
+.rp-res { display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 8px; }
+.rp-res span { background:#f2eee3; border-radius:20px; padding:2px 10px; font-weight:600; font-size:12px; }
+.rp-hoja .st-ok { color:#2E7D4F; font-weight:700; } .rp-hoja .st-no { color:#A93A32; font-weight:700; } .rp-hoja .st-pendiente { color:#B7791F; font-weight:700; }
+.rp-plano { border:1px solid var(--linea); background:#f3efe5; padding:6px; }
+.rp-plano svg { width:100%; height:auto; max-height:520px; display:block; }
+.rp-fotos { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.rp-fotos img { width:110px; height:110px; object-fit:cover; border:1px solid var(--linea); border-radius:3px; }
+.rp-ent { border:1px solid var(--linea); border-radius:6px; padding:10px; margin-bottom:10px; }
+.rp-ent h3 { margin:0 0 6px; font-size:14px; } .rp-ent h3 small { font-weight:400; color:var(--gris); }
+.rp-firmas { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px; }
+.rp-firma { border:1px solid var(--linea); border-radius:4px; padding:6px 8px; text-align:center; background:#fff; }
+.rp-firma img { max-height:52px; max-width:100%; display:block; margin:0 auto 4px; }
+.rp-firma small { display:block; color:var(--gris); font-size:10.5px; }
+.rp-det { white-space:pre-line; color:var(--gris); }
+.rp-cierre { border:2px solid var(--dorado); background:var(--dorado-suave); border-radius:8px; padding:12px 14px; display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:14px; }
+.rp-cierre p { margin:0 0 6px; }
+@media (max-width:700px) { .rp-kv { grid-template-columns:1fr 1fr; } .rp-cierre, .rp-firmas { grid-template-columns:1fr; } .rp-hoja { padding:20px 14px; } .rp-enc { grid-template-columns:50px minmax(0,1fr); } .rp-n { grid-column:1/-1; text-align:left; } }
+</style>
+
+
+<!-- ============ Ingreso ============ -->
+<section id="login" class="login" hidden>
+  <form class="login-caja" id="form-login" autocomplete="on" novalidate>
+    <img src="assets/logo.png" alt="CLEMI" class="login-logo">
+    <h1>Salas de Entrenamiento Quirúrgico</h1>
+    <p class="login-sub">Control de eventos, verificación, distribución de salas e instrumental.</p>
+    <label class="campo"><span>Usuario</span><input id="l-usuario" name="username" autocomplete="username" autocapitalize="none" required></label>
+    <label class="campo"><span>Contraseña</span><input id="l-clave" name="password" type="password" autocomplete="current-password" required></label>
+    <p class="form-error" id="l-error" role="alert" hidden></p>
+    <button class="btn btn-oro btn-grande" type="submit">Ingresar</button>
+    <p class="login-pie">Acceso exclusivo para el equipo de CLEMI. ¿Es cliente? Ingrese al <a href="portal.html">portal de clientes</a>.</p>
+    <a class="btn-realtime" href="tiempo-real.html"><i></i>Real Time<small>Agenda de salas y bitácora en vivo · pantalla completa</small></a>
+  </form>
+</section>
+
+<!-- ============ Aplicación ============ -->
+<div id="app" class="app" hidden>
+  <aside class="lateral">
+    <a href="#/tablero" class="marca" aria-label="Inicio">
+      <span class="marca-sello"><img src="assets/simbolo.png" alt=""></span>
+      <img src="assets/letras.png" alt="CLEMI" class="marca-letras">
+      <span class="marca-sub" id="marca-sub">Salas quirúrgicas</span>
+    </a>
+    <div class="area-switch proceso" role="group" aria-label="Proceso del evento">
+      <div class="proc-tit">Proceso del evento</div>
+      <div class="proc-etapa" data-etapa="1">
+        <div class="proc-cab"><i>1</i><span>Negociación del evento</span></div>
+        <div class="proc-areas"><a href="#/ct" data-area-btn="ct">Nueva solicitud</a></div>
+      </div>
+      <div class="proc-etapa" data-etapa="2">
+        <div class="proc-cab"><i>2</i><span>Cotización</span></div>
+        <div class="proc-areas"><a href="#/ps" data-area-btn="ps">Presupuesto</a></div>
+      </div>
+      <div class="proc-etapa" data-etapa="3">
+        <div class="proc-cab"><i>3</i><span>Administrativo</span></div>
+        <div class="proc-areas"><a href="#/adm" data-area-btn="ad">Seguimiento</a><a href="#/firmas" data-area-btn="fi">Firmas</a><a href="#/th" data-area-btn="th">Talento Humano</a></div>
+      </div>
+      <div class="proc-etapa" data-etapa="4">
+        <div class="proc-cab"><i>4</i><span>La operación</span></div>
+        <div class="proc-areas"><a href="#/tablero" data-area-btn="op">Instrumentación</a><a href="#/morgue" data-area-btn="mo">Morgue</a><a href="#/av" data-area-btn="av">Audiovisuales</a><a href="#/lg" data-area-btn="lg">Logística</a><a href="#/bm" data-area-btn="bm">Biomédica</a></div>
+      </div>
+    </div>
+    <nav class="menu" id="menu">
+      <a href="#/agenda" data-nav="agenda" class="nav-portada"><svg viewBox="0 0 24 24"><path d="M4 5h16v15H4zM4 9h16M8 3v4M16 3v4"/></svg><span>Agenda general</span></a>
+      <a href="#/tablero" data-nav="tablero" data-area="op"><svg viewBox="0 0 24 24"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></svg><span>Tablero</span></a>
+      <a href="#/salas" data-nav="salas" data-area="op"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3zM3 12h7M14 4v6M14 14v6"/></svg><span>Salas</span></a>
+      <a href="#/ingreso" data-nav="ingreso" data-area="op" id="nav-ingreso"><svg viewBox="0 0 24 24"><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4M8 8h3v3H8zM13 8h3v3h-3zM8 13h3v3H8zM14 14h2v2h-2z"/></svg><span>Ingreso QR</span></a>
+      <a href="#/instrumental" data-nav="instrumental" data-area="op"><svg viewBox="0 0 24 24"><path d="M5 19 15 9M13 7l4 4M17 3l4 4-3 3-4-4zM4 20l2-5 3 3z"/></svg><span>Remisiones</span></a>
+      <a href="#/morgue" data-nav="morgue" data-area="mo"><svg viewBox="0 0 24 24"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></svg><span>Tablero morgue</span></a>
+      <a href="#/morgue/inventario" data-nav="morgue-inventario" data-area="mo"><svg viewBox="0 0 24 24"><path d="M4 4h16v5H4zM4 11h16v9H4zM9 6.5h6M9 15h6"/></svg><span>Inventario</span></a>
+      <a href="#/morgue/eventos" data-nav="morgue-eventos" data-area="mo"><svg viewBox="0 0 24 24"><path d="M4 5h16v15H4zM4 9h16M8 3v4M16 3v4M8 14l3 3 5-6"/></svg><span>Asignación a eventos</span></a>
+      <a href="#/ct" data-nav="ct" data-area="ct"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 12h7M9 16h7"/></svg><span>Solicitudes y convenios</span></a>
+      <a href="#/planes" data-nav="planes" data-area="ct"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3zM7 8h4v4H7zM14 8h3M14 12h3M7 16h10"/></svg><span>Planificación del cliente</span></a>
+      <a href="#/ct/clientes" data-nav="ct-clientes" data-area="ct"><svg viewBox="0 0 24 24"><path d="M3 21V8l6-4 6 4v13M15 21V11h6v10M7 11h4M7 15h4M3 21h18"/></svg><span>Clientes del portal</span></a>
+      <a href="#/ct/archivo" data-nav="ct-archivo" data-area="ct"><svg viewBox="0 0 24 24"><path d="M3 4h18v5H3zM5 9v11h14V9M10 13h4"/></svg><span>Archivo de convenios</span></a>
+      <a href="#/ps" data-nav="ps" data-area="ps"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h4M14 17l2 2 3-4"/></svg><span>Cotizaciones</span></a>
+      <a href="#/ps/catalogo" data-nav="ps-catalogo" data-area="ps ct"><svg viewBox="0 0 24 24"><path d="M4 4h16v5H4zM4 11h16v9H4zM9 6.5h6M9 15h6"/></svg><span>Catálogo de presupuesto</span></a>
+      <a href="#/ps/bodega" data-nav="ps-bodega" data-area="ps"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6v10H3zM7 20v-6h10v6M7 17h10"/></svg><span>Bodega</span></a>
+      <a href="#/av" data-nav="av" data-area="av"><svg viewBox="0 0 24 24"><path d="M3 5h18v11H3zM9 20h6M12 16v4M10 8.5l4.5 2-4.5 2z"/></svg><span>Requerimientos por curso</span></a>
+      <a href="#/av/catalogo" data-nav="av-catalogo" data-area="av"><svg viewBox="0 0 24 24"><path d="M4 4h16v5H4zM4 11h16v9H4zM9 6.5h6M9 15h6"/></svg><span>Catálogo para contratación</span></a>
+      <a href="#/av/equipos" data-nav="av-equipos" data-area="av"><svg viewBox="0 0 24 24"><path d="M3 6h18v10H3zM8 20h8M12 16v4M7 10h4M7 13h2"/></svg><span>Equipos de la sala</span></a>
+      <a href="#/firmas" data-nav="firmas" data-area="fi"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M8 17c2-3 3 1 4.5-1.5S14 18 17 16"/></svg><span>Firma de convenios</span></a>
+      <a href="#/adm" data-nav="adm" data-area="ad"><svg viewBox="0 0 24 24"><path d="M4 6h3M4 12h3M4 18h3M10 6h10M10 12h10M10 18h10M5.5 4.5v3M5.5 10.5v3M5.5 16.5v3"/></svg><span>Seguimiento de convenios</span><b class="nav-alerta" id="nav-alertas" hidden></b></a>
+      <a href="#/adm/novedades" data-nav="adm-novedades" data-area="ad"><svg viewBox="0 0 24 24"><path d="M12 3 2 20h20zM12 10v4M12 17v.5"/></svg><span>Novedades</span></a>
+      <a href="#/adm/equipo" data-nav="adm-equipo" data-area="ad"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.5-4 3.2-6.5 6.5-6.5s6 2.5 6.5 6.5M15 11l2 2 4-4"/></svg><span>Equipo a cargo</span></a>
+      <a href="#/lg" data-nav="lg" data-area="lg"><svg viewBox="0 0 24 24"><path d="M3 17h2l1-5h12l1 5h2M6 17v2M18 17v2M7 12l1.5-4h7L17 12M7.5 15h1M15.5 15h1"/></svg><span>Logística</span></a>
+      <a href="#/lg/hoteles" data-nav="lg-hoteles" data-area="lg"><svg viewBox="0 0 24 24"><path d="M3 21V5h12v16M15 9h6v12M7 9h4M7 13h4M7 17h4M2 21h20"/></svg><span>Hoteles aliados</span></a>
+      <a href="#/bm" data-nav="bm" data-area="bm"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg><span>Inventario biomédico</span></a>
+      <a href="#/prep" data-nav="prep" data-area="op mo ct av ps ad lg bm"><svg viewBox="0 0 24 24"><path d="M4 5h16v15H4zM4 9h16M8 3v4M16 3v4M8 14l2 2 4-4"/></svg><span>Preparación de salas</span></a>
+      <a href="#/planes" data-nav="planes" data-area="op mo av ps ad lg"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3zM7 8h4v4H7zM14 8h3M14 12h3M7 16h10"/></svg><span>Planificación del cliente</span></a>
+      <a href="#/th" data-nav="th" data-area="th"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.5-4 3.2-6.5 6.5-6.5s6 2.5 6.5 6.5M16 4.5a3 3 0 0 1 0 6M18 13.5c2 .7 3.3 2.8 3.5 6.5"/></svg><span>Personal</span></a>
+      <a href="#/th/dotacion" data-nav="th-dotacion" data-area="th"><svg viewBox="0 0 24 24"><path d="M8 3 4 6v4h3v11h10V10h3V6l-4-3c-.5 1.5-2 2.5-4 2.5S8.5 4.5 8 3z"/></svg><span>Dotación y entregas</span></a>
+      <a href="#/th/eventos" data-nav="th-eventos" data-area="th"><svg viewBox="0 0 24 24"><path d="M4 5h16v15H4zM4 9h16M8 3v4M16 3v4M12 12l1.2 2.4 2.6.4-1.9 1.8.5 2.6-2.4-1.3-2.4 1.3.5-2.6-1.9-1.8 2.6-.4z"/></svg><span>Eventos CLEMI</span></a>
+      <a href="#/bitacora" data-nav="bitacora"><svg viewBox="0 0 24 24"><path d="M6 3h11l3 3v15H6zM9 8h8M9 12h8M9 16h5"/></svg><span>Bitácora</span></a>
+      <a href="#/admin" data-nav="admin" id="nav-admin" hidden><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg><span>Administración</span></a>
+    </nav>
+    <div class="lateral-pie">
+      <div class="en-vivo" id="en-vivo"><i></i><span>En línea</span></div>
+    </div>
+  </aside>
+
+  <div class="principal">
+    <header class="cabecera">
+      <div class="cab-izq"><img src="assets/letras.png" alt="CLEMI" class="cab-logo"><div class="reloj" id="reloj"></div></div>
+      <div class="cab-der">
+        <button class="btn btn-oro btn-sm" id="btn-nuevo-evento" type="button">+ Nuevo<span class="solo-ancho"> entrenamiento</span></button>
+        <button type="button" class="ev-campana" id="btn-ev" title="Eventos CLEMI" aria-label="Eventos CLEMI" hidden><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg><span id="ev-n" hidden></span></button>
+        <div class="usuario-menu">
+          <button type="button" class="usuario-btn" id="usuario-btn" aria-haspopup="true" aria-expanded="false">
+            <span class="avatar" id="u-avatar"></span><span class="u-nombre" id="u-nombre"></span>
+          </button>
+          <div class="usuario-pop" id="usuario-pop" hidden>
+            <div class="u-rol" id="u-rol"></div>
+            <button type="button" id="btn-area" onclick="location.hash='#/areas'">Cambiar de área</button>
+            <button type="button" id="btn-clave">Cambiar contraseña</button>
+            <button type="button" id="btn-salir">Cerrar sesión</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="ensayo-banda" id="ensayo-banda" hidden></div>
+    <div class="aviso-cambios" id="aviso-cambios" hidden>
+      <span>Otro usuario hizo cambios mientras usted editaba.</span>
+      <button type="button" class="btn btn-sm" id="btn-aplicar-cambios">Ver cambios</button>
+    </div>
+    <div class="demo-cinta">Vista previa con datos de ejemplo · los cambios no se guardan · la versión real funciona en el hosting de CLEMI</div>
+    <main id="main" class="contenido" tabindex="-1"></main>
+  </div>
+</div>
+
+<div id="modal-raiz"></div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<script src="assets/jspdf.umd.min.js"></script>
+<script src="assets/pdf.min.js"></script>
+<script>if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "assets/pdf.worker.min.js";</script>
+<script src="assets/qrcode.js"></script>
+<script src="assets/xlsx.mini.min.js"></script>
+<script src="assets/ingreso.js"></script>
+<script src="assets/acta.js"></script>
+<script src="assets/three.min.js"></script>
+<script src="assets/OrbitControls.js"></script>
+<script src="assets/GLTFLoader.js"></script>
+<script src="assets/visor3d.js"></script>
+<script src="assets/dispo.js"></script>
+<script src="assets/dotacion.js"></script>
+<script src="assets/ev-arte.js"></script>
+<script src="assets/plano3d.js"></script>
+<script src="assets/plano.js"></script>
+<script src="assets/demo-api.js"></script>
+<script src="assets/demo-aveq.js"></script>
+<script src="assets/demo-ppdata.js"></script>
+<script src="assets/demo-bodega.js"></script>
+<script src="assets/demo-ct.js"></script>
+<script src="assets/demo-contratos.js"></script>
+<script src="assets/demo-portal.js"></script>
+<script src="assets/demo-th.js"></script>
+<script src="assets/demo-oct.js"></script>
+<script src="assets/demo-fases.js"></script>
+<script src="assets/app.js"></script>
+
+</body></html>

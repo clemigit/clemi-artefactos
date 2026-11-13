@@ -1,0 +1,43 @@
+/* CLEMI · Contrato para leer y firmar (portal y plataforma interna) */
+.ctr-doc { background: #FBF6EA; border: 1px solid #E6DCC2; border-radius: 6px; padding: 34px 40px; font-family: Georgia, 'Times New Roman', serif; color: #1E2532; line-height: 1.6; font-size: .98rem; max-height: 78vh; overflow: auto; position: relative; }
+.ctr-doc img.ctr-letras { height: 34px; display: block; margin: 0 auto 6px; }
+.ctr-titulo { text-align: center; color: #13213C; font-size: 1.15rem; font-weight: 700; letter-spacing: .04em; margin: 10px 0 2px; }
+.ctr-sub { text-align: center; color: #8A6D1F; font-style: italic; margin-bottom: 16px; }
+.ctr-banda { background: #13213C; color: #C6A13B; padding: 6px 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .82rem; margin: 18px 0 8px; border-bottom: 3px solid #C6A13B; }
+.ctr-h { color: #13213C; font-weight: 700; margin: 16px 0 6px; border-bottom: 1px solid #C6A13B; padding-bottom: 2px; }
+.ctr-doc p { margin: 0 0 8px; text-align: justify; }
+.ctr-li { margin: 0 0 6px; text-align: justify; }
+.ctr-li.l2 { padding-left: 22px; } .ctr-li.l3 { padding-left: 44px; } .ctr-li.l4 { padding-left: 66px; }
+.ctr-doc table { border-collapse: collapse; width: 100%; margin: 8px 0 12px; font-size: .9rem; background: #fff; }
+.ctr-doc th { background: #13213C; color: #fff; padding: 6px 8px; text-align: left; font-weight: 700; }
+.ctr-doc td { border: 1px solid #E6DCC2; padding: 5px 8px; vertical-align: top; }
+.ctr-doc td.der, .ctr-doc th.der { text-align: right; white-space: nowrap; }
+.ctr-doc tr.tot td { font-weight: 700; background: #F3EBD4; }
+.ctr-firmas { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.ctr-firmas > div { display: flex; flex-direction: column; gap: 2px; }
+.ctr-firmas .ctr-fimg { height: 70px; display: flex; align-items: flex-end; border-bottom: 1px solid #1E2532; margin-bottom: 4px; }
+.ctr-firmas .ctr-fimg img { max-height: 66px; max-width: 100%; }
+.ctr-firmas small { color: #5A6478; font-style: italic; }
+.ctr-anexo img { width: 100%; height: auto; border: 1px solid #E6DCC2; margin: 6px 0; }
+.ctr-pb { border-top: 1px dashed #C6A13B; margin: 26px 0; }
+@media (max-width: 640px) { .ctr-doc { padding: 20px 16px; } .ctr-firmas { grid-template-columns: 1fr; } }
+.ctr-titulo { display: flex; align-items: center; gap: 16px; justify-content: center; text-align: left; border-bottom: 3px solid #C6A13B; padding-bottom: 12px; margin-bottom: 14px; }
+.ctr-titulo img { width: 54px; height: auto; }
+.ctr-titulo small { color: #8A6D1F; letter-spacing: .12em; font-size: .7rem; font-weight: 700; display: block; }
+.ctr-titulo h1 { font-family: Georgia, serif; color: #13213C; font-size: 1.25rem; margin: 2px 0; letter-spacing: .03em; }
+.ctr-titulo em { color: #5A6478; }
+h3.ctr-h { background: #13213C; color: #fff; font-size: .86rem; letter-spacing: .08em; text-transform: uppercase; padding: 6px 12px; border-bottom: 3px solid #C6A13B; margin: 20px 0 10px; }
+h3.ctr-h span { color: #C6A13B; }
+.ctr-li.l3::before { content: '◆ '; color: #C6A13B; font-size: .7em; }
+.ctr-valor td:last-child, .ctr-valor th:last-child { text-align: right; white-space: nowrap; }
+.ctr-valor.izq td:last-child, .ctr-valor.izq th:last-child { text-align: left; white-space: normal; }
+.ctr-valor th { color: #C6A13B; }
+.ctr-valor tr[class] td { font-weight: 700; background: #F3EDDC; color: #13213C; }
+.ctr-valor tr.total td { background: #E9D9A6; }
+.ctr-firma { display: flex; flex-direction: column; gap: 2px; }
+.ctr-firma img { max-height: 70px; max-width: 220px; align-self: flex-start; }
+.ctr-firma b { border-top: 2px solid #C6A13B; padding-top: 4px; color: #13213C; }
+.ctr-firma .n { font-weight: 700; }
+.ctr-firma-vacia { height: 70px; display: flex; align-items: flex-end; color: #B7A77A; font-style: italic; font-size: .85rem; }
+img.ctr-anexo { width: 100%; height: auto; border: 1px solid #E6DCC2; margin: 6px 0; }
+.cl-lienzo { width: 100%; max-width: 520px; height: 170px; background: #fff; border: 2px dashed var(--dorado); border-radius: 10px; touch-action: none; cursor: crosshair; display: block; }

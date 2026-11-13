@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>CLEMI · Portal de clientes</title>
+<meta name="theme-color" content="#173A28">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+<link rel="stylesheet" href="assets/cliente.css">
+<style>
+.demo-cinta { background:#C6A13B; color:#112A1D; text-align:center; font-size:.82rem; font-weight:700; padding:6px 16px; }
+.demo-cinta a, .demo-cinta button { color:#112A1D; }
+.demo-cinta button { background:none; border:0; font:inherit; text-decoration:underline; cursor:pointer; padding:0; }
+</style>
+</head>
+<body class="cl">
+<div class="demo-cinta">Vista previa del portal de clientes · datos de ejemplo, nada se guarda · entre como <button type="button" data-u="andrea.gomez">Andrea Gómez</button> o <button type="button" data-u="paula.rios">Paula Ríos</button> (contraseña «demo») · <a href="index.html">plataforma interna</a></div>
+<header class="cl-cab">
+  <img src="assets/letras.png" alt="CLEMI" class="cl-logo">
+  <div class="cl-cab-t"><span>Portal de clientes</span><b id="cl-cliente"></b></div>
+  <button type="button" class="btn btn-sm cl-salir" id="cl-salir" hidden>Salir</button>
+</header>
+<main class="cl-main" id="cl-main"><div class="vacio" id="cl-cargando">Cargando…</div></main>
+<div id="modal-raiz"></div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<script src="assets/demo-api.js"></script>
+<script src="assets/demo-aveq.js"></script>
+<script src="assets/demo-ppdata.js"></script>
+<script src="assets/demo-bodega.js"></script>
+<script src="assets/demo-ct.js"></script>
+<script src="assets/demo-contratos.js"></script>
+<script src="assets/demo-portal.js"></script>
+<script src="assets/demo-fases.js"></script>
+<script src="assets/portal.js"></script>
+<script>
+document.querySelectorAll('.demo-cinta [data-u]').forEach(function (b) {
+  b.onclick = function () {
+    var u = document.getElementById('pt-u'), k = document.getElementById('pt-k');
+    if (!u) { fetch('portal-api.php?a=salir', { method: 'POST', body: '{}' }).then(function () { location.reload(); }); try { sessionStorage.setItem('demo_portal_auto', b.getAttribute('data-u')); } catch (e) {} return; }
+    u.value = b.getAttribute('data-u'); k.value = 'demo'; document.getElementById('pt-form').requestSubmit();
+  };
+});
+(function auto() { var x = null; try { x = sessionStorage.getItem('demo_portal_auto'); sessionStorage.removeItem('demo_portal_auto'); } catch (e) {} if (!x) return;
+  var n = 0, iv = setInterval(function () { var u = document.getElementById('pt-u'); if (u) { clearInterval(iv); u.value = x; document.getElementById('pt-k').value = 'demo'; document.getElementById('pt-form').requestSubmit(); } if (++n > 40) clearInterval(iv); }, 100); })();
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>CLEMI · Real Time</title>
+<meta name="theme-color" content="#0E2318">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/tiempo-real.css">
+</head>
+<body class="rt">
+<header class="rt-cab">
+  <img src="assets/letras.png" alt="CLEMI" class="rt-logo">
+  <div class="rt-tit"><span class="rt-vivo"><i></i>Real Time</span><b>Agenda de salas de entrenamiento</b></div>
+  <div class="rt-semana">
+    <button type="button" id="rt-prev" aria-label="Semana anterior">‹</button>
+    <span id="rt-rango">—</span>
+    <button type="button" id="rt-next" aria-label="Semana siguiente">›</button>
+    <button type="button" id="rt-hoy">Hoy</button>
+  </div>
+  <div class="rt-reloj" id="rt-reloj"><b>--:--</b><span>—</span></div>
+  <button type="button" class="rt-btn" id="rt-full">⛶ Pantalla completa</button>
+  <a class="rt-btn rt-salir" href="index.html">Salir</a>
+</header>
+
+<div class="rt-ticker" aria-label="Eventos y reservas de la semana">
+  <div class="rt-ticker-et">Eventos y reservas<br>de la semana</div>
+  <div class="rt-ticker-via"><div class="rt-ticker-cinta" id="rt-cinta"></div></div>
+</div>
+
+<main class="rt-main">
+  <div class="rt-agenda" id="rt-agenda"><div class="rt-vacio">Cargando la agenda…</div></div>
+</main>
+
+<section class="rt-panel" aria-live="polite">
+  <div class="rt-hoy">
+    <h2>Hoy en CLEMI <small id="rt-hoy-f"></small></h2>
+    <div id="rt-hoy-ev" class="rt-hoy-ev"></div>
+  </div>
+  <div class="rt-bit">
+    <h2>Bitácora en tiempo real <small>lo que va sucediendo en los eventos de hoy</small></h2>
+    <ol id="rt-bit" class="rt-bit-l"></ol>
+  </div>
+</section>
+<p class="rt-estado" id="rt-estado">Conectando…</p>
+
+<script src="assets/demo-api.js"></script>
+<script src="assets/demo-aveq.js"></script>
+<script src="assets/demo-ppdata.js"></script>
+<script src="assets/demo-bodega.js"></script>
+<script src="assets/demo-ct.js"></script>
+<script src="assets/demo-contratos.js"></script>
+<script src="assets/demo-portal.js"></script>
+<script src="assets/demo-th.js"></script>
+<script src="assets/demo-oct.js"></script>
+<script src="assets/demo-fases.js"></script>
+<script src="assets/tiempo-real.js"></script>
+</body>
+</html>
